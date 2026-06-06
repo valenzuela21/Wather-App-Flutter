@@ -116,39 +116,6 @@ Se utiliza Realm para:
 - Soporte básico offline.
 
 
-## 📦 Build Release
-
-### Android APK
-
-```bash
-flutter build apk --release
-```
-
-### Android App Bundle
-
-```bash
-flutter build appbundle --release
-```
-
----
-
-## 📸 Capturas de Pantalla
-
-> Agrega aquí imágenes de la aplicación.
-
-```md
-![Home](assets/screenshots/home.png)
-![Weather](assets/screenshots/weather.png)
-```
-
----
-
-## 👨‍💻 Autor
-
-Desarrollado con Flutter ❤️
-
----
-
 
 // Before insert config
 ````agsl
@@ -160,6 +127,7 @@ cd ..
 flutter run
 ````
 
+## 📦 Build Release
 
 ### Generate Build Bundle Android With Flavors
 Generate the build so you can upload it to the Play Store
