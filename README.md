@@ -152,7 +152,7 @@ flutter build apk --flavor production -t lib/main.dart
 
 ### Config Run Android
 
-![Config Android Barra](https://bitbucket.org/alejandroarco/netsubasta.app-current/raw/9807d6bbfa79ff457fa4466be943559fc6ea9287/barra_config.png)
+![Config Android Barra](https://github.com/valenzuela21/Wather-App-Flutter/blob/master/barra_config.png?raw=true)
 ![Config Android](https://github.com/valenzuela21/Wather-App-Flutter/blob/master/config_android.png?raw=true)
 ![Config Android Two](https://github.com/valenzuela21/Wather-App-Flutter/blob/master/config_android_two.png?raw=true)
 
