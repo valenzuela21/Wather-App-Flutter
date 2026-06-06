@@ -90,7 +90,13 @@ Configura la URL base y la API Key del proveedor meteorológico:
 ```dart
 class ApiConfig {
   static const String baseUrl = "https://api.weather.com";
-  static const String apiKey = "YOUR_API_KEY";
+ static String get baseUrl {
+    if (appFlavor == Flavor.prod) {
+      return "https://weather.visualcrossing.com";
+    }else{
+      return "https://weather.visualcrossing.com";
+    }
+  }
 }
 ```
 
