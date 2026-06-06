@@ -151,6 +151,7 @@ flutter build apk --flavor production -t lib/main.dart
 ````
 
 ### Config Run Android
+
 ![Config Android Barra](https://bitbucket.org/alejandroarco/netsubasta.app-current/raw/9807d6bbfa79ff457fa4466be943559fc6ea9287/barra_config.png)
 ![Config Android](https://bitbucket.org/alejandroarco/netsubasta.app-current/raw/9807d6bbfa79ff457fa4466be943559fc6ea9287/config_android.png)
 ![Config Android Two](https://bitbucket.org/alejandroarco/netsubasta.app-current/raw/9807d6bbfa79ff457fa4466be943559fc6ea9287/config_android_two.png)
@@ -159,8 +160,9 @@ flutter build apk --flavor production -t lib/main.dart
 ### Config Run Xcode
 Xcode already includes environment preconfiguration.
 
-![config_ios](https://bitbucket.org/alejandroarco/netsubasta.app-current/raw/89c530989f84800af5b36fbbe42982e797ec8169/development-ios.png)
-![config_ios](https://bitbucket.org/alejandroarco/netsubasta.app-current/raw/89c530989f84800af5b36fbbe42982e797ec8169/production-ios.png)
+![Configuración iOS Desarrollo](https://bitbucket.org/alejandroarco/netsubasta.app-current/src/89c530989f84800af5b36fbbe42982e797ec8169/development-ios.png)
+
+![Configuración iOS Producción](https://bitbucket.org/alejandroarco/netsubasta.app-current/src/89c530989f84800af5b36fbbe42982e797ec8169/production-ios.png)
 
 ### Generate Icons DEV o Prod
 ````agsl
