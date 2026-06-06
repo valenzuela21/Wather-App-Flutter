@@ -160,9 +160,9 @@ flutter build apk --flavor production -t lib/main.dart
 ### Config Run Xcode
 Xcode already includes environment preconfiguration.
 
-![Configuración iOS Desarrollo](https://bitbucket.org/alejandroarco/netsubasta.app-current/raw/89c530989f84800af5b36fbbe42982e797ec8169/development-ios.png)
+![Configuración iOS Desarrollo](https://github.com/valenzuela21/Wather-App-Flutter/blob/master/production-ios.png?raw=true)
 
-![Configuración iOS Producción](https://bitbucket.org/alejandroarco/netsubasta.app-current/raw/89c530989f84800af5b36fbbe42982e797ec8169/production-ios.png)
+![Configuración iOS Producción](https://github.com/valenzuela21/Wather-App-Flutter/blob/master/development-ios.png?raw=true)
 
 ### Generate Icons DEV o Prod
 ````agsl
