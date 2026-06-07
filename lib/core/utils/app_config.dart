@@ -20,7 +20,6 @@ class AppConfig {
   static bool get isDev => appFlavor == 'prod';
 
   static Future<void> init() async {
-
     final realm = Realm(
       Configuration.local([
         WeatherCache.schema,
@@ -28,55 +27,11 @@ class AppConfig {
       ]),
     );
 
+    Get.put<Realm>(realm, permanent: true);
+
     Get.put<ConnectionServices>(
       ConnectionServices(),
       permanent: true,
-    );
-
-    Get.put<Realm>(
-      realm,
-      permanent: true,
-    );
-
-    Get.lazyPut<WeatherLocalDatasource>(
-          () => WeatherLocalDatasourceImpl(
-        Get.find<Realm>(),
-      ),
-    );
-
-    // Datasources
-    Get.lazyPut<WeatherRemoteDatasource>(
-          () => WeatherRemoteDatasource(),
-      fenix: true,
-    );
-
-    // Repositories
-    Get.lazyPut<WeatherRepository>(
-          () => WeatherRepositoryImpl(
-        Get.find<WeatherRemoteDatasource>(),
-        Get.find<WeatherLocalDatasource>(),
-        Get.find<ConnectionServices>(),
-      ),
-      fenix: true,
-    );
-
-    Get.lazyPut<GetWeatherUseCase>(
-          () => GetWeatherUseCase(
-        Get.find<WeatherRepository>(),
-      ),
-    );
-
-    Get.lazyPut<GetEventsUseCase>(
-          () => GetEventsUseCase(
-        Get.find<WeatherRepository>(),
-      ),
-    );
-
-    Get.lazyPut<WeatherController>(
-          () => WeatherController(
-        Get.find<GetWeatherUseCase>(),
-        Get.find<GetEventsUseCase>(),
-      ),
     );
   }
 }

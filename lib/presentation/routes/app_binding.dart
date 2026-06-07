@@ -21,7 +21,6 @@ class WeatherBinding extends Bindings {
       ),
     );
 
-
     Get.lazyPut<WeatherRemoteDatasource>(
           () => WeatherRemoteDatasource(),
     );
@@ -32,7 +31,6 @@ class WeatherBinding extends Bindings {
         Get.find<WeatherLocalDatasource>(),
         Get.find<ConnectionServices>(),
       ),
-      fenix: true,
     );
 
     Get.lazyPut<GetWeatherUseCase>(

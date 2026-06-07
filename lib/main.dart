@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wheaterapp/presentation/routes/app_binding.dart';
 import 'package:wheaterapp/presentation/routes/app_pages.dart';
 import 'package:wheaterapp/presentation/routes/app_routes.dart';
 import 'core/utils/app_config.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
 
     return  GetMaterialApp(
       title: 'Weather Clime',
+      initialBinding: WeatherBinding(),
       initialRoute: Routes.events,
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,
