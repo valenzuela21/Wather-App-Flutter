@@ -83,6 +83,106 @@ flutter run
 
 ---
 
+## 🧪 Pruebas
+
+El proyecto incluye **41 tests** (unitarios, de integración y de widgets) que validan la lógica de negocio sin depender de la API real, de Realm ni de conectividad del dispositivo.
+
+### Ejecutar tests
+
+```bash
+# Todos los tests
+flutter test
+
+# Solo integración del datasource remoto
+flutter test test/data/datasource/weather_remote_datasource_test.dart
+
+# Solo widgets de pantallas
+flutter test test/presentation/pages/pages_widget_test.dart
+
+# Por nombre
+flutter test --name "WeatherPage"
+
+# Cobertura de código
+flutter test --coverage
+```
+
+### Estructura de `test/`
+
+```text
+test/
+├── fixtures/
+│   └── weather_fixtures.dart
+├── fakes/                                 # Dobles manuales (repositorio, caché, red)
+├── mocks/                                 # mocktail: Dio y NetworkInfo
+│   ├── mock_dio.dart
+│   └── mock_network_info.dart
+├── helpers/
+│   └── widget_test_helpers.dart           # Harness GetX para widgets
+├── data/
+│   ├── datasource/
+│   │   └── weather_remote_datasource_test.dart  # Integración con Dio mock
+│   ├── models/
+│   └── repositories/
+├── domain/usecase/
+├── presentation/
+│   ├── controllers/
+│   └── pages/
+│       └── pages_widget_test.dart         # WeatherPage + EventsPage
+└── widget_test.dart
+```
+
+### Tipos de prueba
+
+| Tipo | Archivo(s) | Descripción |
+|------|------------|-------------|
+| **Unitarios** | `models/`, `repositories/`, `usecase/`, `controllers/` | Lógica aislada con fakes manuales |
+| **Integración** | `weather_remote_datasource_test.dart` | `WeatherRemoteDatasource` + Dio/`NetworkInfo` mockeados con **mocktail** |
+| **Widgets** | `pages_widget_test.dart` | UI de `WeatherPage` y `EventsPage` con `WidgetTestHarness` |
+
+### Tests de integración — `WeatherRemoteDatasource`
+
+Usan **mocktail** para simular `Dio` y `NetworkInfo` sin llamadas HTTP reales:
+
+- `getLast5Days` devuelve `WeatherModel` y verifica URL/parámetros de la API.
+- `getEvents` parsea la lista de días como eventos.
+- Lanza `NetworkException` sin conexión.
+- Propaga `DioException` ante errores del servidor.
+
+`WeatherRemoteDatasource` acepta un `Dio` opcional en el constructor para inyección en tests:
+
+```dart
+datasource = WeatherRemoteDatasource(
+  networkInfo: mockNetworkInfo,
+  dio: mockDio,
+);
+```
+
+### Tests de widgets — `WeatherPage` y `EventsPage`
+
+`WidgetTestHarness` registra un `WeatherController` con `FakeWeatherRepository` antes de montar cada pantalla:
+
+| Pantalla | Escenarios cubiertos |
+|----------|---------------------|
+| **WeatherPage** | Loading, datos del clima, pronóstico, navegación a `NoInternetPage` |
+| **EventsPage** | Loading, lista de eventos, estado vacío, sin internet, navegación al detalle |
+
+Los tests de widgets que usan GetX están agrupados en un solo archivo (`pages_widget_test.dart`) para evitar conflictos con el estado global de GetX al ejecutar tests en paralelo.
+
+### Fakes y fixtures
+
+- **`fixtures/`** — JSON de Visual Crossing y entidades de ejemplo.
+- **`fakes/`** — Sustitutos manuales de repositorio, datasources y conectividad.
+- **`mocks/`** — Mocks generados con mocktail para capa HTTP.
+
+### Agregar nuevos tests
+
+1. Crear el archivo reflejando la capa de `lib/`.
+2. Reutilizar `fixtures/`, `fakes/` y `mocks/` existentes.
+3. Para pantallas con GetX, usar `WidgetTestHarness` o agrupar en el mismo archivo.
+4. Ejecutar `flutter test` antes de subir cambios.
+
+---
+
 ## 🌐 Configuración
 
 Configura la URL base y la API Key del proveedor meteorológico:

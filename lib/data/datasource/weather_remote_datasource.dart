@@ -17,8 +17,9 @@ class WeatherRemoteDatasource {
 
   WeatherRemoteDatasource({
     NetworkInfo? networkInfo,
+    Dio? dio,
   }) {
-    dio = DioClient.create();
+    this.dio = dio ?? DioClient.create();
     this.networkInfo = networkInfo ?? NetworkInfoImpl(Connectivity());
   }
 

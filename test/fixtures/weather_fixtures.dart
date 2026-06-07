@@ -57,6 +57,17 @@ final sampleEventJson = {
   'description': 'Posible tormenta eléctrica por la tarde',
 };
 
+final sampleEventsApiResponse = {
+  'days': [
+    sampleEventJson,
+    {
+      'datetime': '2026-06-08',
+      'conditions': 'Lluvia',
+      'description': 'Lluvia moderada',
+    },
+  ],
+};
+
 WeatherModel sampleWeatherModel() => WeatherModel.fromJson(sampleWeatherJson);
 
 List<EventModel> sampleEventModels() => [
